@@ -10,23 +10,23 @@ const obj1 = {
 const new1 = Object.create(obj1)
 
 // Still empty
-console.log(new1)             // {}
+console.log(new1)              // {}
 
 // but could access properties from prototype
-console.log(new1.a) // { b: { prop: 'b' } }
+console.log(new1.a)            // { b: { prop: 'b' } }
 
 // let's change that prototyped props
 new1.a.b = { newProp: 'overridden' }
 
 // still empty
-console.log(new1)             // {}
+console.log(new1)              // {}
 
 // but prototype has changed :(
-console.log(obj1)             // { a: { b: { newProp: 'overridden' } } }
+console.log(obj1)              // { a: { b: { newProp: 'overridden' } } }
 
 
 // Let's try restore our original object..
-const obj1 = { ... } // Ops! SyntaxError: Identifier 'obj1' has already beed declared
+// const obj1 = { ... }        // Ops! SyntaxError: Identifier 'obj1' has already beed declared
 
 // We have to define new variable
 const obj2 = {
@@ -52,3 +52,16 @@ console.log(new2)              // { a: { b: { newProp: 'overridden' } } }
 // WTF? Original has also been changed. :(
 console.log(obj2)              // { a: { b: { newProp: 'overridden' } } }
 
+
+
+// Let's do it properly!
+let new3 = JSON.parse(JSON.stringify(obj2))
+
+// and change 'b' prop
+new3.a.b = { prop: 'b' }
+
+// sweet!
+console.log(new3)             // { a: { b: { prop: 'b' } } }
+
+// original objects props are still unchanged
+console.log(obj2)             // { a: { b: { newProp: 'overridden' } } }
