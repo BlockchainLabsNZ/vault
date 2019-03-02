@@ -54,7 +54,7 @@ console.log(obj2)              // { a: { b: { newProp: 'overridden' } } }
 
 
 
-// JSON serialization – the better way of deep cloning
+// JSON serialization – works well with data properties, not with functions or undefined ones. See below.
 const new3 = JSON.parse(JSON.stringify(obj2))
 
 // and change 'b' prop
