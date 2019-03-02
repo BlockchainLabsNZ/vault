@@ -55,7 +55,7 @@ console.log(obj2)              // { a: { b: { newProp: 'overridden' } } }
 
 
 // Let's do it properly!
-let new3 = JSON.parse(JSON.stringify(obj2))
+const new3 = JSON.parse(JSON.stringify(obj2))
 
 // and change 'b' prop
 new3.a.b = { prop: 'b' }
