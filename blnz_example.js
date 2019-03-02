@@ -54,7 +54,7 @@ console.log(obj2)              // { a: { b: { newProp: 'overridden' } } }
 
 
 
-// Let's do it properly!
+// JSON serialization – the better way of deep cloning
 const new3 = JSON.parse(JSON.stringify(obj2))
 
 // and change 'b' prop
@@ -63,3 +63,7 @@ console.log(new3)             // { a: { b: { prop: 'b' } } }
 
 // original object's props are still unchanged
 console.log(obj2)             // { a: { b: { newProp: 'overridden' } } }
+
+
+// Warning! JSON serialization also has limitations: 
+// https://flaviocopes.com/how-to-clone-javascript-object/#json-serialization
